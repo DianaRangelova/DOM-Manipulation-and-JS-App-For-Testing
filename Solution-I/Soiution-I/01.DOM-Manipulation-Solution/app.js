@@ -27,12 +27,14 @@ function solve() {
       return;
     }
 
+    // Create paragraph elements for the snowman detail list
     let articleElementInfo = document.createElement("article");
     let liElementInfo = document.createElement("li");
     liElementInfo.setAttribute("class", "snowman-info");
     let btnContainer = document.createElement("div");
     btnContainer.setAttribute("class", "btn-container");
 
+    // Create paragraph elements for the snowman detail list
     let snowmanName = document.createElement("p");
     snowmanName.textContent = `Name: ${snowmanNameElement.value}`;
 
@@ -48,6 +50,7 @@ function solve() {
     let attribute = document.createElement("p");
     attribute.textContent = `Attribute: ${attributeElement.value}`;
 
+    // Create button elements for the Edit and Next buttons
     let editBtn = document.createElement("button");
     editBtn.setAttribute("class", "edit-btn");
     editBtn.textContent = "Edit";
@@ -56,6 +59,7 @@ function solve() {
     nextBtn.setAttribute("class", "next-btn");
     nextBtn.textContent = "Next";
 
+    // add all fields and buttons to the snowman article element
     articleElementInfo.appendChild(snowmanName);
     articleElementInfo.appendChild(snowmanHeght);
     articleElementInfo.appendChild(location);
@@ -69,13 +73,15 @@ function solve() {
     liElementInfo.appendChild(btnContainer);
 
     snowListElement.appendChild(liElementInfo);
-
+    
+    // Save filled in fields in let variables and reset form
     let editedSnowmanName = snowmanNameElement.value;
     let editedHeght = snowmanHeightElement.value;
     let editedLocation = locationElement.value;
     let editedCreator = creatorNameElement.value;
     let editedAttribute = attributeElement.value;
 
+    // Reset form
     snowmanNameElement.value = "";
     snowmanHeightElement.value = "";
     locationElement.value = "";
@@ -84,6 +90,7 @@ function solve() {
 
     addbtnElement.disabled = true;
 
+    // On Edit functionallity
     editBtn.addEventListener("click", onEdit);
 
     function onEdit() {
@@ -97,23 +104,31 @@ function solve() {
       addbtnElement.disabled = false;
     }
 
+    // Add nex button finctionallity
     nextBtn.addEventListener("click", onNext);
 
     function onNext() {
+      // Create confirm element container to store the final snowman data
       let liElementconfirm = document.createElement("li");
       liElementconfirm.setAttribute("class", "snowman-content");
 
+      // Create article element to store the send button
       let articleElementContinue = document.createElement("article");
       articleElementContinue = articleElementInfo;
 
+      // Create send button
       let sendBtn = document.createElement("button");
       sendBtn.setAttribute("class", "send-btn");
       sendBtn.textContent = "Send";
+
+      // Add send button to the article element and the article element to the li element
       articleElementContinue.appendChild(sendBtn);
       liElementconfirm.appendChild(articleElementContinue);
 
+      // Remove the li element where the data were stored
       liElementInfo.remove();
 
+      // Add the element with the whole data and button to the existing element
       showSnowmanElement.appendChild(liElementconfirm);
 
       sendBtn.addEventListener("click", onConfirm);
