@@ -131,14 +131,19 @@ function solve() {
       // Add the element with the whole data and button to the existing element
       showSnowmanElement.appendChild(liElementconfirm);
 
+      // Logic on click send button
       sendBtn.addEventListener("click", onConfirm);
       function onConfirm() {
+        // Remove main element 
         main.remove();
+        // Create Back button
         let backBtn = document.createElement("button");
         backBtn.setAttribute("class", "back-btn");
         backBtn.textContent = "Back";
+        // Make back image visible
         backImg.hidden = false;
 
+        // Add back button to the boyd element
         bodyElement.appendChild(backBtn);
 
         backBtn.addEventListener("click", onBack);
